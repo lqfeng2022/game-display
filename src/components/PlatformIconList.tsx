@@ -21,8 +21,6 @@ const PlatformIconList = ({ platforms }: Props) => {
   // error: {iconMap[platform.slug]}
   // solution: { [key: string]: IconType }
   // [key: string]: index signature, present a key/property of this obj, like pc, playstation..
-  // it means, here any number of keys of type string, don't care about the names,
-  // each key is mapped to IconType(a value of type) which defined in react-icons lib
   const iconMap: { [key: string]: IconType } = {
     pc: FaWindows,
     playstation: FaPlaystation,
@@ -36,12 +34,11 @@ const PlatformIconList = ({ platforms }: Props) => {
   };
 
   return (
-    // marginY={1} // multiple theme.space value, in chakra is 4px
-    // marginY={"10px"} // pricise control
     <HStack marginY={1}>
       {platforms.map((platform) => (
         // <Text>{platform.name}</Text>
-        <Icon as={iconMap[platform.slug]} color="gray.500" />
+        // 1.3)add key argument
+        <Icon key={platform.id} as={iconMap[platform.slug]} color="gray.500" />
       ))}
     </HStack>
   );

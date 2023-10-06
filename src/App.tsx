@@ -2,16 +2,20 @@ import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
+import { useState } from "react";
+import { Genre } from "./hooks/useGenres";
 
 function App() {
+  // 2)share selectedGenre with GameGrid
+  // 2.1)declare a STATE hook variable for storing selected genre
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+
   return (
     <Grid
       templateAreas={{
         base: `"nav" "main"`,
         lg: `"nav nav" "aside main"`,
       }}
-      // 3.2)add fixed width to th column of side panel,
-      //  1fr: 1 fraction, stretches and takes all available space
       templateColumns={{
         base: "1fr",
         lg: "200px 1fr",
@@ -21,14 +25,14 @@ function App() {
         <NavBar />
       </GridItem>
       <Show above="lg">
-        {/* 3.1)add paddingX here not GenreList component, 
-               cus what if one day we wanna add another component in side panel we have to remember adding the exact same padding */}
         <GridItem area="aside" paddingX={5}>
-          <GenreList />
+          {/* 2.3)so here we get notified and set the selectedGenre, this calls App to re-render  */}
+          <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
         </GridItem>
       </Show>
       <GridItem area="main">
-        <GameGrid />
+        {/* 3.1)so in the next render, we pass selectedGenre to the GameGrid */}
+        <GameGrid selectedGenre={selectedGenre} />
       </GridItem>
     </Grid>
   );
