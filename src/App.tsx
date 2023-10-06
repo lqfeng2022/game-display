@@ -10,12 +10,20 @@ function App() {
         base: `"nav" "main"`,
         lg: `"nav nav" "aside main"`,
       }}
+      // 3.2)add fixed width to th column of side panel,
+      //  1fr: 1 fraction, stretches and takes all available space
+      templateColumns={{
+        base: "1fr",
+        lg: "200px 1fr",
+      }}
     >
       <GridItem area="nav">
         <NavBar />
       </GridItem>
       <Show above="lg">
-        <GridItem area="aside">
+        {/* 3.1)add paddingX here not GenreList component, 
+               cus what if one day we wanna add another component in side panel we have to remember adding the exact same padding */}
+        <GridItem area="aside" paddingX={5}>
           <GenreList />
         </GridItem>
       </Show>
