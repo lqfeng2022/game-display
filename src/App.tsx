@@ -27,7 +27,10 @@ function App() {
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
           {/* 2.3)so here we get notified and set the selectedGenre, this calls App to re-render  */}
-          <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
+          <GenreList
+            selectedGenre={selectedGenre}
+            onSelectGenre={(genre) => setSelectedGenre(genre)}
+          />
         </GridItem>
       </Show>
       <GridItem area="main">
