@@ -15,6 +15,9 @@ export interface Game {
   metacritic: number;
 }
 
+//3)pass it('searchText') to backend
+// every thing in this obj(GameQuery), this is beauty of query obj
+// instead passing so many variables around, simplely pass only one that includes anything we need
 const useGames = (gameQuery: GameQuery) =>
   useData<Game>(
     "/games",
@@ -22,8 +25,9 @@ const useGames = (gameQuery: GameQuery) =>
       params: {
         genres: gameQuery.genre?.id,
         platforms: gameQuery.platform?.id,
-        //2.4)when calling the server, we should add a new query parameter
         ordering: gameQuery.sortOrder,
+        //3.1)
+        search: gameQuery.searchText,
       },
     },
     [gameQuery] //anytime this obj changes, we need refetch the data
