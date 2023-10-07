@@ -13,11 +13,10 @@ export interface Game {
   background_image: string;
   parent_platforms: { platform: Platform }[]; // design smell
   metacritic: number;
+  rating_top: number;
+  //rating: float number, rating_top: whole number
 }
 
-//3)pass it('searchText') to backend
-// every thing in this obj(GameQuery), this is beauty of query obj
-// instead passing so many variables around, simplely pass only one that includes anything we need
 const useGames = (gameQuery: GameQuery) =>
   useData<Game>(
     "/games",
@@ -26,7 +25,6 @@ const useGames = (gameQuery: GameQuery) =>
         genres: gameQuery.genre?.id,
         platforms: gameQuery.platform?.id,
         ordering: gameQuery.sortOrder,
-        //3.1)
         search: gameQuery.searchText,
       },
     },
