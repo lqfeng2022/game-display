@@ -1,6 +1,5 @@
 import { GameQuery } from "../App";
 import useData from "./useData";
-// import { Genre } from "./useGenres";
 
 export interface Platform {
   id: number;
@@ -23,6 +22,8 @@ const useGames = (gameQuery: GameQuery) =>
       params: {
         genres: gameQuery.genre?.id,
         platforms: gameQuery.platform?.id,
+        //2.4)when calling the server, we should add a new query parameter
+        ordering: gameQuery.sortOrder,
       },
     },
     [gameQuery] //anytime this obj changes, we need refetch the data
