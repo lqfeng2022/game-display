@@ -15,16 +15,17 @@ export interface Game {
   metacritic: number;
 }
 
-// 3.4)In GAMES hook, pass this selectedGenre as a query string parameter to the DATA hook
-// ->make it more flexible by giving it an AxiosRequestConfig obj
-// 3.4.a){ params: { genres: selectedGenre?.id } }: 
-//  when using DATA hook, we should pass 'genres' as query parameter
-//  params: prperty of AxiosRequestConfig
-// 3.6.c)[selectedGenre?.id]: we should specify them when(dependencies) calling DATA hook
-// const useGames = () =>useData<Game>("/games");
-const useGames = (selectedGenre: Genre | null) =>
-  useData<Game>("/games", { params: { genres: selectedGenre?.id } }, [
-    selectedGenre?.id,
-  ]);
+// 2.3)add it as 2nd parameter in GAMES hook
+// 2.4)pass it to api using this ({ params: {}}) and add another property here
+// 2.5)add it as dependency
+const useGames = (
+  selectedGenre: Genre | null,
+  selectedPlatform: Platform | null
+) =>
+  useData<Game>(
+    "/games",
+    { params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id } },
+    [selectedGenre?.id, selectedPlatform?.id]
+  );
 
 export default useGames;

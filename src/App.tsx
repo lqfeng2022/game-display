@@ -5,9 +5,16 @@ import GenreList from "./components/GenreList";
 import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
+import { Platform } from "./hooks/useGames";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  // 1)declare a STATE variable for keeping track of platforms
+  // a)when the platform changes, pass selected platfrom to the GameGrid for filtering
+  // b)then go to PlatformSelector when user selecte a platfrom, we notify App component
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+    null
+  );
 
   return (
     <Grid
@@ -32,8 +39,18 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <PlatformSelector />
-        <GameGrid selectedGenre={selectedGenre} />
+        {/* 3)redern this label('Platfroms') dynamically*/}
+        <PlatformSelector
+          // 3.1)add selectedPlatform here
+          selectedPlatform={selectedPlatform}
+          // 1.3)go to App component to set this prop
+          onSelectPlatform={(platform) => setSelectedPlatform(platform)}
+        />
+        {/* 2)pass selectedPlatform to GameGrid */}
+        <GameGrid
+          selectedPlatform={selectedPlatform}
+          selectedGenre={selectedGenre}
+        />
       </GridItem>
     </Grid>
   );
