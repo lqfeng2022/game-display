@@ -3,15 +3,12 @@ import useGames, { Platform } from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
-// import { Genre } from "../hooks/useGenres";
 import { GameQuery } from "../App";
 
 interface Props {
   gameQuery: GameQuery;
 }
 
-//2.3_a)in this component we get gameQuery everything in this obj
-// so we don't need to make any changes in this component
 const GameGrid = ({ gameQuery }: Props) => {
   const { data, error, isLoading } = useGames(gameQuery);
   const skeletons = [1, 2, 3, 4, 5, 6];
@@ -20,9 +17,9 @@ const GameGrid = ({ gameQuery }: Props) => {
     <>
       {error && <Text>{error}</Text>}
       <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
+        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} //5 -> 4
         padding="10px"
-        spacing={3}
+        spacing={5} //3 -> 5
       >
         {isLoading &&
           skeletons.map((skeleton) => (
