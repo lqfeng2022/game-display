@@ -12,7 +12,6 @@ import SortSelector from "./components/SortSelector";
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
-  //2.1)
   sortOrder: string;
 }
 
@@ -50,16 +49,12 @@ function App() {
             }
           />
           <SortSelector
-            //4)render current sort order dynamically
-            //4.1)pass current sort order to this component
             sortOrder={gameQuery.sortOrder}
-            //2.2)this call App to re-render
             onSelectSortOrder={(sortOrder) =>
               setGameQuery({ ...gameQuery, sortOrder })
             }
           />
         </HStack>
-        {/* 2.3)in the next render, we pass new GameQuery obj to GameGrid */}
         <GameGrid gameQuery={gameQuery} />
       </GridItem>
     </Grid>
