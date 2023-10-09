@@ -18,9 +18,6 @@ interface Props {
 const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   const { data, isLoading, error } = useGenres();
 
-  //NOTE: we can get rid of these 2 lines, cus we no longer care about error and isLoading properties
-  // prefer to keep this implementation here, 
-  // in case we changing our mind in the future and decide call the server to get the genres
   if (error) return null;
   if (isLoading) return <Spinner />;
 
@@ -30,7 +27,12 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
         Genres
       </Heading>
       <List>
-        {data.map((genre) => (
+        {/* ERROR: 
+          1.1)all data we get from rawg api comes in this format(->fig.2)
+          1.2)solution: this 'data' obj is not iterable, we should iterate data.results
+          2)data: type is Genre[] or undefined, we cannot access 'results' directly, cus we made a mistake earlier */}
+        {/* 2.4)data? -> data?.results */}
+        {data?.results.map((genre) => (
           <ListItem paddingY="6px" key={genre.id}>
             <HStack>
               <Image
