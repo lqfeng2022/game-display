@@ -3,17 +3,18 @@ import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { useState } from "react";
-import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./components/PlatformSelector";
-//3.1)change the from module to usePlatforms
-import { Platform } from "./hooks/usePlatforms";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
 
-//pack related variables inside an obj
+// undefined: the absence of a value
+// null: the intentional absence of a value
+
 export interface GameQuery {
-  genre: Genre | null;
-  platform: Platform | null;
+  //1)'genre: Genre | null' -> 'genreId?: number'
+  genreId?: number;
+  //2)'platform: Platform | null' -> 'platformId: number'
+  platformId: number;
   sortOrder: string;
   searchText: string;
 }
@@ -40,8 +41,14 @@ function App() {
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
           <GenreList
-            selectedGenre={gameQuery.genre}
-            onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+            //1.1)update 'genre' -> 'genreId' adn 'genre' -> 'genreId: genre'
+            //1.2)compilation error, go to GenreList to fix it
+            //1.2_d)'selectedGenre' -> 'selectedGenreId'
+            selectedGenreId={gameQuery.genreId}
+            //1.3)'genre' -> 'genre.id'
+            onSelectGenre={(genre) =>
+              setGameQuery({ ...gameQuery, genreId: genre.id })
+            }
           />
         </GridItem>
       </Show>
@@ -50,9 +57,11 @@ function App() {
           <GameHeading gameQuery={gameQuery} />
           <HStack spacing={5} marginBottom={5}>
             <PlatformSelector
-              selectedPlatform={gameQuery.platform}
+              //2.1)go to this PlatformSelector component
+              selectedPlatformId={gameQuery.platformId}
+              //2.2)'platform' -> 'platform.id'
               onSelectPlatform={(platform) =>
-                setGameQuery({ ...gameQuery, platform })
+                setGameQuery({ ...gameQuery, platformId: platform.id })
               }
             />
             <SortSelector

@@ -12,10 +12,12 @@ import getCroppedImageUrl from "../services/image-url";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  //1.2_a)'selectedGenre: Genre | null' -> 'selectedGenreId?: number'
+  selectedGenreId?: number;
 }
 
-const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
+//1.2_b)'selectedGenre' -> 'selectedGenreId'
+const GenreList = ({ onSelectGenre, selectedGenreId }: Props) => {
   const { data, isLoading, error } = useGenres();
 
   if (error) return null;
@@ -27,11 +29,6 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
         Genres
       </Heading>
       <List>
-        {/* ERROR: 
-          1.1)all data we get from rawg api comes in this format(->fig.2)
-          1.2)solution: this 'data' obj is not iterable, we should iterate data.results
-          2)data: type is Genre[] or undefined, we cannot access 'results' directly, cus we made a mistake earlier */}
-        {/* 2.4)data? -> data?.results */}
         {data?.results.map((genre) => (
           <ListItem paddingY="6px" key={genre.id}>
             <HStack>
@@ -44,7 +41,8 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
               <Button
                 whiteSpace="normal" //by default 'nowrap'
                 textAlign="left"
-                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+                //1.2_c)'selectedGenre?.id' -> 'selectedGenreId'
+                fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
                 onClick={() => onSelectGenre(genre)}
                 fontSize="lg"
                 variant="link"
