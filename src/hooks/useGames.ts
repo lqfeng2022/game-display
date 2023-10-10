@@ -43,6 +43,8 @@ const useGames = (gameQuery: GameQuery) =>
       //1.4_e)check lastPage.next ? ..
       return lastPage.next ? allPages.length + 1 : undefined;
     },
+    // NOTE: forget 'staleTime'
+    staleTime: 24 * 60 * 60 * 1000 //24h
   });
 
 export default useGames;
