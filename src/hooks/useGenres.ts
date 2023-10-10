@@ -1,9 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import genres from "../data/genres";
-//2.1)apiClient obj -> APIClient class
-import APIClient, { FetchResponse } from "../services/api-client";
+import APIClient from "../services/api-client";
 
-//2.2)create an instance of APIClient here for working with genres
 const apiClient = new APIClient<Genre>("/genres");
 
 export interface Genre {
@@ -14,11 +12,18 @@ export interface Genre {
 
 const useGenres = () =>
   useQuery({
+    //ISSUE: queryKey
+    //REASON: earlier we modify FetchResponse interface, 
+    // introduce a new property - next, but we don't have it initialData
+    //SOLUTION: 
     queryKey: ["genres"],
-    //2.3) replace query f to apiClient.getAll
     queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000, //24h
-    initialData: { count: genres.length, results: genres },
+    //1)add 'next: null' inside this obj
+    // problem: what if one day we add another porperty in the interface, 
+    // we gotta back here add it here again..
+    //2)a better approach is modify static data - genres
+    initialData: genres,
   });
 
 export default useGenres;
