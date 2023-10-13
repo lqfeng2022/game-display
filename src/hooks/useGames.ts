@@ -9,6 +9,10 @@ const apiClient = new APIClient<Game>("/games");
 export interface Game {
   id: number;
   name: string;
+  //2.1)add 'slug' here
+  slug: string;
+  //6.2_b)add 'description_raw' here
+  description_raw: string;
   background_image: string;
   parent_platforms: { platform: Platform }[]; // design smell
   metacritic: number;

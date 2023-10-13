@@ -2,7 +2,6 @@ import axios, { AxiosRequestConfig } from "axios";
 
 export interface FetchResponse<T> {
   count: number;
-  //1.4_d)add next property here
   next: string | null;
   results: T[];
 }
@@ -23,7 +22,14 @@ class APIClient<T> {
   getAll = (config: AxiosRequestConfig) => {
     return axiosInstance
       .get<FetchResponse<T>>(this.endpoint, config)
-      .then((res) => res.data); //extract data from response
+      .then((res) => res.data);
+  };
+
+  //3.3_a)add another method for getting a single obj
+  get = (id: number | string) => {
+    return axiosInstance
+      .get<T>(this.endpoint + "/" + id)
+      .then((res) => res.data);
   };
 }
 
