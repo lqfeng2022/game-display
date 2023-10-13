@@ -10,18 +10,13 @@ import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
 import { HStack, Icon } from "@chakra-ui/react";
-//3.2)change the from module to usePlatforms
 import { Platform } from "../entities/Platform";
 import { IconType } from "react-icons";
-
 interface Props {
   platforms: Platform[];
 }
 
 const PlatformIconList = ({ platforms }: Props) => {
-  // error: {iconMap[platform.slug]}
-  // solution: { [key: string]: IconType }
-  // [key: string]: index signature, present a key/property of this obj, like pc, playstation..
   const iconMap: { [key: string]: IconType } = {
     pc: FaWindows,
     playstation: FaPlaystation,
@@ -37,8 +32,6 @@ const PlatformIconList = ({ platforms }: Props) => {
   return (
     <HStack marginY={1}>
       {platforms.map((platform) => (
-        // <Text>{platform.name}</Text>
-        // 1.3)add key argument
         <Icon key={platform.id} as={iconMap[platform.slug]} color="gray.500" />
       ))}
     </HStack>
