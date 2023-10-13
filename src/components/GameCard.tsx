@@ -1,4 +1,4 @@
-import { Game } from "../hooks/useGames";
+import { Game } from "../entities/Game";
 import { Card, Image, CardBody, Heading, HStack } from "@chakra-ui/react";
 import PlatformIconList from "./PlatformIconList";
 import getCroppedImageUrl from "../services/image-url";
@@ -24,7 +24,7 @@ const GameCard = ({ game }: Props) => {
         <Heading fontSize="2xl">
           {/* 2)wrap it inside <Link>, 
                 then go to 'Game' interface add slug property*/}
-          <Link to={'/games/' + game.slug}>{game.name}</Link>
+          <Link to={"/games/" + game.slug}>{game.name}</Link>
         </Heading>
         <Emoji rating={game.rating_top} />
       </CardBody>
