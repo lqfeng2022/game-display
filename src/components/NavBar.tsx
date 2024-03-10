@@ -1,6 +1,7 @@
 import { HStack, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import SearchInput from "./SearchInput";
+import ColorModeToggle from "./ColorModeToggle";
 
 const NavBar = () => {
   return (
@@ -11,9 +12,7 @@ const NavBar = () => {
         </Text>
       </Link>
       <SearchInput />
-      <Text color="gray.300" whiteSpace="nowrap" fontSize="md" as="i">
-        LI QIUFENG
-      </Text>
+      <ColorModeToggle />
     </HStack>
   );
 };
