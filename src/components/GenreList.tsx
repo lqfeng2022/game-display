@@ -22,7 +22,7 @@ const GenreList = () => {
 
   return (
     <>
-      <Heading fontSize="2xl" marginBottom={3}>
+      <Heading fontSize="2xl" marginBottom={3} paddingTop={5} >
         Genres
       </Heading>
       <List>
@@ -30,7 +30,7 @@ const GenreList = () => {
           <ListItem paddingY="6px" key={genre.id}>
             <HStack>
               <Image
-                boxSize="32px"
+                boxSize="40px"
                 borderRadius={8}
                 objectFit="cover"
                 src={getCroppedImageUrl(genre.image_background)}
