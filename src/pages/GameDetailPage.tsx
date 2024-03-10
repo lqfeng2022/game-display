@@ -14,17 +14,19 @@ const GameDetailPage = () => {
   if (error || !game) throw error;
 
   return (
-    <SimpleGrid columns={{ base: 1, md: 2 }} spacing={3}>
-      <GridItem>
-        <Heading>{game.name}</Heading>
-        <ExpandableText>{game.description_raw}</ExpandableText>
-        <GameAttributes game={game} />
-      </GridItem>
-      <GridItem>
-        <GameTrailer gameId={game.id} />
-        <GameScreenshorts gameId={game.id} />
-      </GridItem>
-    </SimpleGrid>
+    <>
+      <Heading paddingBottom={5}>{game.name}</Heading>
+      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={3}>
+        <GridItem>
+          <ExpandableText>{game.description_raw}</ExpandableText>
+          <GameAttributes game={game} />
+          <GameTrailer gameId={game.id} />
+        </GridItem>
+        <GridItem>
+          <GameScreenshorts gameId={game.id} />
+        </GridItem>
+      </SimpleGrid>
+    </>
   );
 };
 

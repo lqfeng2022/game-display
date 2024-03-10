@@ -9,6 +9,7 @@ export default interface Game {
   slug: string;
   genres: Genre[];
   publishers: Publisher[];
+  website: string;
   description_raw: string;
   background_image: string;
   parent_platforms: { platform: Platform }[]; // design smell

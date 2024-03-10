@@ -1,4 +1,4 @@
-import { Button, Text } from "@chakra-ui/react";
+import { Button, Heading, Text } from "@chakra-ui/react";
 import { useState } from "react";
 
 interface Props {
@@ -16,18 +16,23 @@ const ExpandableText = ({ children }: Props) => {
   const summary = expanded ? children : children.substring(0, limit) + "...";
 
   return (
-    <Text>
-      {summary}
-      <Button
-        size="xs"
-        marginLeft={1}
-        fontWeight="bold"
-        colorScheme="yellow"
-        onClick={() => setExpanded(!expanded)}
-      >
-        {expanded ? "Show Less" : "Show More"}
-      </Button>
-    </Text>
+    <>
+      <Heading fontSize="2xl" color="gray.500" marginBottom={3}>
+        Description
+      </Heading>
+      <Text fontSize="lg">
+        {summary}
+        <Button
+          size="sm"
+          marginLeft={1}
+          fontWeight="bold"
+          colorScheme="yellow"
+          onClick={() => setExpanded(!expanded)}
+        >
+          {expanded ? "Show Less" : "Show More"}
+        </Button>
+      </Text>
+    </>
   );
 };
 

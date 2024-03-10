@@ -8,7 +8,7 @@ interface Props {
 
 const DefinitionItem = ({ term, children }: Props) => {
   return (
-    <Box marginY={5}>
+    <Box marginY={2}>
       {/* replace <dt> to chakra-ui ->  */}
       <Heading as="dt" fontSize="md" color="gray.600">
         {term}
