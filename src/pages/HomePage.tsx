@@ -11,14 +11,14 @@ const HomePage = () => {
     <Grid
       templateAreas={{
         base: `"main"`,
-        lg: `"aside main"`,
+        xl: `"aside main"`,
       }}
       templateColumns={{
         base: "1fr",
-        lg: "200px 1fr",
+        xl: "200px 1fr",
       }}
     >
-      <Show above="lg">
+      <Show above="xl">
         <GridItem area="aside" paddingX={5}>
           <GenreList />
         </GridItem>
@@ -26,7 +26,7 @@ const HomePage = () => {
       <GridItem area="main">
         <Box paddingLeft={2.5}>
           <GameHeading />
-          <Show below="lg">
+          <Show below="xl">
             <GenreList2 />
           </Show>
           <HStack spacing={5} marginBottom={5}>
