@@ -22,7 +22,9 @@ const GameTrailer = ({ gameId }: Props) => {
         //'poster': add preview image
         //'controls': for user play/pose video
         <video src={first.data[480]} poster={first.preview} controls />
-      ) : null}
+      ) : (
+        "There's no trailer here"
+      )}
     </Box>
   );
 };

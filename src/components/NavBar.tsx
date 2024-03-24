@@ -5,7 +5,7 @@ import ColorModeToggle from "./ColorModeToggle";
 
 const NavBar = () => {
   return (
-    <HStack padding="10px" margin={2} spacing={3}>
+    <HStack padding="10px" margin={2} spacing={4}>
       <Link to="/">
         <Text as="b" whiteSpace="nowrap" fontSize="lg">
           G A M E s
