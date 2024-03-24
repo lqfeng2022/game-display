@@ -5,10 +5,10 @@ import ColorModeToggle from "./ColorModeToggle";
 
 const NavBar = () => {
   return (
-    <HStack padding="10px" margin={2}>
+    <HStack padding="10px" margin={2} spacing={3}>
       <Link to="/">
-        <Text as="i" whiteSpace="nowrap" fontSize="lg">
-          GAME HUB
+        <Text as="b" whiteSpace="nowrap" fontSize="lg">
+          G A M E s
         </Text>
       </Link>
       <SearchInput />
