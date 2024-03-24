@@ -7,16 +7,8 @@ import GameCardContainer from "./GameCardContainer";
 import GameCardSkeleton from "./GameCardSkeleton";
 
 const GameGrid = () => {
-
-  const {
-    data,
-    error,
-    isLoading,
-    isFetchingNextPage,
-    fetchNextPage,
-    hasNextPage,
-  } = useGames();
-  const skeletons = [1, 2, 3, 4, 5, 6];
+  const { data, error, isLoading, fetchNextPage, hasNextPage } = useGames();
+  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
   if (error) return <Text>{error.message}</Text>;
 
@@ -30,11 +22,7 @@ const GameGrid = () => {
       next={() => fetchNextPage()}
       loader={<Spinner />}
     >
-      <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-        spacing={5}
-        padding="10px"
-      >
+      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing={5} padding="10px">
         {isLoading &&
           skeletons.map((skeleton) => (
             <GameCardContainer key={skeleton}>
