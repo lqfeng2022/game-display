@@ -13,16 +13,15 @@ import useGameQueryStore from "../store";
 
 const GenreList = () => {
   const { data, isLoading, error } = useGenres();
-  const selectedGenreId = useGameQueryStore(s => s.gameQuery.genreId)
+  const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
   const setSelectedGenreId = useGameQueryStore((s) => s.setGenreId);
-
 
   if (error) return null;
   if (isLoading) return <Spinner />;
 
   return (
     <>
-      <Heading fontSize="2xl" marginBottom={3} paddingTop={5} >
+      <Heading fontSize="2xl" marginBottom={3} paddingTop={5}>
         Genres
       </Heading>
       <List>

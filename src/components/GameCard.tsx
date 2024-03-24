@@ -8,7 +8,6 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import PlatformIconList from "./PlatformIconList";
-import getCroppedImageUrl from "../services/image-url";
 import CriticScore from "./CriticScore";
 import Emoji from "./Emoji";
 import { Link } from "react-router-dom";
@@ -23,7 +22,7 @@ const GameCard = ({ game }: Props) => {
   return (
     <Card>
       <Link to={"/games/" + game.slug}>
-        <Image src={getCroppedImageUrl(game.background_image)} />
+        <Image src={game.background_image} />
         <CardBody bg={colorMode == "light" ? "gray.50" : ""}>
           <HStack justifyContent="space-between" marginBottom={3}>
             <PlatformIconList

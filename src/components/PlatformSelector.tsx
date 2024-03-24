@@ -27,7 +27,7 @@ const PlatformSelector = () => {
         transition="all 0.2s"
         borderRadius="md"
         borderWidth="1px"
-        _hover={{ bg: "gray.50" }}
+        _hover={{ bg: "gray.300" }}
         _expanded={{ bg: "blue.100" }}
         _focus={{ boxShadow: "outline" }}
       >

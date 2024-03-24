@@ -4,6 +4,7 @@ import GameHeading from "../components/GameHeading";
 import GenreList from "../components/GenreList";
 import PlatformSelector from "../components/PlatformSelector";
 import SortSelector from "../components/SortSelector";
+import GenreList2 from "../components/GenreList2";
 
 const HomePage = () => {
   return (
@@ -25,6 +26,9 @@ const HomePage = () => {
       <GridItem area="main">
         <Box paddingLeft={2.5}>
           <GameHeading />
+          <Show below="lg">
+            <GenreList2 />
+          </Show>
           <HStack spacing={5} marginBottom={5}>
             <PlatformSelector />
             <SortSelector />
