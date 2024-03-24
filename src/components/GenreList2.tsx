@@ -25,7 +25,7 @@ const GenreList = () => {
   return (
     <Wrap spacing={3} py={3}>
       {genres.map((genre) => (
-        <WrapItem>
+        <WrapItem key={genre.id}>
           <Button
             px={2}
             colorScheme="teal"
@@ -33,7 +33,6 @@ const GenreList = () => {
             variant="outline"
             fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
             onClick={() => setSelectedGenreId(genre.id)}
-            key={genre.id}
           >
             {genre.name}
           </Button>
