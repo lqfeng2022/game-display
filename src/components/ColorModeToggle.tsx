@@ -6,7 +6,7 @@ const ColorModeToggle = () => {
 
   return (
     <Button colorScheme="blue" variant="ghost" onClick={toggleColorMode}>
-      <Icon boxSize="20px" as={colorMode == "light" ? FiMoon : FiSun} />
+      <Icon boxSize="25px" as={colorMode == "light" ? FiMoon : FiSun} />
     </Button>
   );
 };
