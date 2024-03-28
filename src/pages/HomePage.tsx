@@ -27,7 +27,7 @@ const HomePage = () => {
         <Box paddingLeft={2.5}>
           <Box pt="20px" >
             <Text as="i" fontSize="md">
-              Design and Code by <b>LI QIUFENG</b>
+              Code and Share by <b>LI QIUFENG</b>
             </Text>
           </Box>
           <GameHeading />
