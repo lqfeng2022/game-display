@@ -24,7 +24,7 @@ const GameCard = ({ game }: Props) => {
   return (
     <Card>
       <Link to={"/games/" + game.slug}>
-        <AspectRatio ratio={4 / 3}>
+        <AspectRatio ratio={16 / 9}>
           <Image src={game.background_image || noImage} />
         </AspectRatio>
         <CardBody bg={colorMode == "light" ? "gray.50" : ""}>

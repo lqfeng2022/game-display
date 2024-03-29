@@ -8,9 +8,8 @@ const NavBar = () => {
     <HStack
       justifyContent="space-between"
       padding="10px"
-      pb="0px"
-      margin={3}
-      mt={2}
+      pr="0px"
+      margin={2}
       spacing={3}
     >
       <Link to="/">
