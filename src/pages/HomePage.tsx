@@ -25,9 +25,9 @@ const HomePage = () => {
       </Show>
       <GridItem area="main">
         <Box paddingLeft={2.5}>
-          <Box pt="20px" >
+          <Box pt="20px">
             <Text as="i" fontSize="md">
-              Code and Share by <b>LI QIUFENG</b>
+              Shared by <b>LI QIUFENG</b>
             </Text>
           </Box>
           <GameHeading />
