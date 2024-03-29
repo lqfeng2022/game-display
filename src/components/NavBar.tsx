@@ -9,7 +9,8 @@ const NavBar = () => {
       justifyContent="space-between"
       padding="10px"
       pb="0px"
-      margin={2}
+      margin={3}
+      mt={2}
       spacing={3}
     >
       <Link to="/">
