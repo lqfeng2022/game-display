@@ -1,12 +1,16 @@
-import { Box, Grid, GridItem, HStack, Show, Text } from "@chakra-ui/react";
+import { Box, Button, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import { useState } from "react";
 import GameGrid from "../components/GameGrid";
 import GameHeading from "../components/GameHeading";
 import GenreList from "../components/GenreList";
 import GenreList2 from "../components/GenreList2";
 import PlatformSelector from "../components/PlatformSelector";
+import SearchInput from "../components/SearchInput";
 import SortSelector from "../components/SortSelector";
 
 const HomePage = () => {
+  const [hide, setHide] = useState(false);
+
   return (
     <Grid
       templateAreas={{
@@ -24,17 +28,27 @@ const HomePage = () => {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <Box paddingLeft={2.5}>
-          <Box pt="20px">
-            <Text as="i" fontSize="md">
-              Shared by <b>LI QIUFENG</b>
-            </Text>
-          </Box>
-          <GameHeading />
-          <Show below="xl">
-            <GenreList2 />
+        <Box px={2.5}>
+          <Show below="sm">
+            <Box>
+              <SearchInput />
+            </Box>
           </Show>
-          <HStack spacing={5} marginBottom={5}>
+          <GameHeading />
+          <Box py={2}>
+            <Show below="xl">
+              <Button
+                py={2}
+                colorScheme="gray"
+                fontSize="lg"
+                onClick={() => setHide(!hide)}
+              >
+                {hide ? "Hide" : "Show"} Genres:
+              </Button>
+              {hide && <GenreList2 />}
+            </Show>
+          </Box>
+          <HStack spacing={5} my={2}>
             <PlatformSelector />
             <SortSelector />
           </HStack>

@@ -1,20 +1,27 @@
-import { HStack, Text } from "@chakra-ui/react";
+import { HStack, Show, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import SearchInput from "./SearchInput";
 import ColorModeToggle from "./ColorModeToggle";
+import SearchInput from "./SearchInput";
 
 const NavBar = () => {
   return (
-    <HStack padding="10px" margin={2} spacing={4}>
+    <HStack
+      justifyContent="space-between"
+      padding="10px"
+      margin={2}
+      spacing={3}
+    >
       <Link to="/">
         <Text as="b" whiteSpace="nowrap" fontSize="xl">
           G A M E s
         </Text>
       </Link>
-      <SearchInput />
+      <Show above="sm">
+        <SearchInput />
+      </Show>
       <ColorModeToggle />
     </HStack>
   );
-}; 
+};
 
 export default NavBar;
